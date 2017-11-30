@@ -1,0 +1,12 @@
+content	contactssidebar		    chrome/content/
+locale	contactssidebar en-US	    chrome/locale/en-US/
+locale	contactssidebar ja	    chrome/locale/ja-JP/
+locale	contactssidebar vo	    chrome/locale/vo/
+skin	contactssidebar classic/1.0 chrome/skin/classic/
+
+overlay	chrome://messenger/content/mailWindowOverlay.xul	chrome://contactssidebar/content/contactsSidebar.xul
+# overlay	chrome://messenger/content/messenger.xul				chrome://contactssidebar/content/contactsSidebar.xul
+overlay	chrome://messenger/content/messengercompose/messengercompose.xul	chrome://contactssidebar/content/csMessengerComposeOverlay.xul
+overlay	chrome://messenger/content/messengercompose/abContactsPanel.xul		chrome://contactssidebar/content/csAbContactsPanel.xul
+overlay chrome://messenger/content/addressbook/abContactsPanel.xul		chrome://contactssidebar/content/csAbContactsPanel.xul
+style	chrome://global/content/customizeToolbar.xul				chrome://contactssidebar/skin/contactsSidebar.css

@@ -1,0 +1,28 @@
+<!ENTITY contactsSidebar.properties.label "プロパティ">
+<!ENTITY contactsSidebar.properties.accesskey "P">
+<!ENTITY contactsSidebar.delete.label "削除">
+<!ENTITY contactsSidebar.delete.accesskey "D">
+
+<!ENTITY contactsSidebar.newmsgButton.label "メッセージを作成">
+<!ENTITY contactsSidebar.newmsgButton.accesskey "W">
+<!ENTITY contactsSidebar.newmsgCCButton.label "Ccとしてメッセージを作成">
+<!ENTITY contactsSidebar.newmsgCCButton.accesskey "C">
+<!ENTITY contactsSidebar.newmsgBCCButton.label "Bccとしてメッセージを作成">
+<!ENTITY contactsSidebar.newmsgBCCButton.accesskey "B">
+<!ENTITY contactsSidebar.newcardButton.label "新規カード">
+<!ENTITY contactsSidebar.newcardButton.accesskey "N">
+<!ENTITY contactsSidebar.copyContact.label "コピー先">
+<!ENTITY contactsSidebar.copyContact.accesskey "T">
+<!ENTITY contactsSidebar.forwardContact.label "vCard を転送">
+<!ENTITY contactsSidebar.forwardContact.accesskey "F">
+<!ENTITY contactsSidebar.searchContains.label "含む">
+<!ENTITY contactsSidebar.searchContains.accesskey "C">
+<!ENTITY contactsSidebar.searchBeginsWidth.label "先頭一致">
+<!ENTITY contactsSidebar.searchBeginsWidth.accesskey "B">
+<!ENTITY contactsSidebar.searchEndsWidth.label "末尾一致">
+<!ENTITY contactsSidebar.searchEndsWidth.accesskey "E">
+<!ENTITY contactsSidebar.searchIs.label "完全一致">
+<!ENTITY contactsSidebar.searchIs.accesskey "I">
+
+<!ENTITY contactsSidebar.searchAdvanced.label "条件検索">
+<!ENTITY contactsSidebar.searchAdvanced.accesskey "A">
