@@ -69,7 +69,8 @@
   <script type="application/x-javascript" src="chrome://messenger/content/mailCommands.js"/>
   <script type="application/x-javascript" src="chrome://messenger/content/mailWindowOverlay.js"/>
   
-  <script type="application/x-javascript" src="chrome://global/content/nsUserSettings.js"/>
+  <!-- It was src="chrome://global/content/nsUserSettings.js" -->
+  <script type="application/x-javascript" src="nsUserSettings.js"/>
   <script type="application/x-javascript" src="chrome://global/content/globalOverlay.js"/>
   <script type="application/x-javascript" src="csCommon.js"/>
   <script type="application/x-javascript" src="contactsSidebar.js"/>
@@ -183,7 +184,7 @@
       <separator class="tiny"/>
 
       <vbox>
-        <label value="&searchInput.label;"/>
+        <label value="&searchContacts.label;"/>
         <hbox>
           <textbox id="peopleSearchInput" flex="1" type="search" onfocus="csOnSearchInputFocus();" onblur="csOnSearchInputBlur(event);"
                   onclick="this.select();" oninput="csOnSearchInput(false);" onkeypress="csOnSearchKeyPress(event);">
@@ -278,6 +279,9 @@
                  persist="hidden ordinal width sortDirection" hidden="true"
                  flex="1" label="&WorkPhone.label;"/>
         <splitter class="tree-splitter"/>
+        <treecol id="addrbook" class="sortDirectionIndicator"
+                 persist="hidden ordinal width sortDirection" hidden="true"
+                 flex="1" label="&Addrbook.label;"/>
       </treecols>
       <treechildren ondraggesture="nsDragAndDrop.startDrag(event, abResultsPaneObserver);"/>
     </tree>

@@ -34,7 +34,7 @@
  *
  * ***** END LICENSE BLOCK ***** */
 
- function initPrefs()
+function initPrefs()
 {
   var prefElements = document.getElementsByAttribute("prefstring", "*");
   for (var i=0; i<prefElements.length; i++ )

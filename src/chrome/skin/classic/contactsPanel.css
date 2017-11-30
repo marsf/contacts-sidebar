@@ -50,16 +50,11 @@ separator.tiny {
 
 /* ::::: sidebar close button ::::: */
 .cs-closebutton {
-  list-style-image: url("chrome://global/skin/icons/close.png");
+  list-style-image: url("chrome://messenger/skin/icons/close-button.png");
+  -moz-image-region: rect(0px, 16px, 16px, 0px);
   -moz-appearance: none;
-  -moz-image-region: rect(0, 16px, 16px, 0);
   border: none !important;
-  height: 30px;
-  padding: 0;
-  position: relative;
-  z-index: 2;
-  background: none;
-  cursor: default;
+  padding: 2px;
 }
 
 .cs-closebutton:hover {

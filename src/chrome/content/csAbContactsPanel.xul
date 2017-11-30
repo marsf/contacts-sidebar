@@ -47,7 +47,8 @@
 
 <overlay id="csAbContactsPanel" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 
-  <script type="application/x-javascript" src="chrome://global/content/nsUserSettings.js"/>
+  <!-- It was src="chrome://global/content/nsUserSettings.js" -->
+  <script type="application/x-javascript" src="nsUserSettings.js"/>
   <script type="application/x-javascript" src="chrome://messenger/content/addressbook/abResultsPane.js"/>
   <!-- globalOverlay.js needs to be loaded with abResultsPane.js (Bug 570820) -->
   <script type="application/x-javascript" src="chrome://global/content/globalOverlay.js"/>

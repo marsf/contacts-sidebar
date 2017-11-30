@@ -40,7 +40,7 @@
 
   <Description about="urn:mozilla:install-manifest">
     <em:id>{4dce973c-25a5-4657-8e37-6c2a85c24a7e}</em:id>
-    <em:version>1.7pre+</em:version>
+    <em:version>1.7.2pre</em:version>
     <em:type>2</em:type>
     
     <!-- Target Application this extension can install into, 
@@ -48,13 +48,13 @@
     <em:targetApplication>
       <Description>
         <em:id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</em:id>
-        <em:minVersion>24.0.*</em:minVersion>
-        <em:maxVersion>31.*</em:maxVersion>
+        <em:minVersion>52.0.*</em:minVersion>
+        <em:maxVersion>59.*</em:maxVersion>
       </Description>
     </em:targetApplication>
     
     <!-- Front End MetaData -->
-    <em:name>Contacts Sidebar JP (20140730)</em:name>
+    <em:name>Contacts Sidebar JP (20171130)</em:name>
     <em:description>Displays the address books in a sidebar in the 3-pane-window.</em:description>
     <em:creator>Jeroen Peters (en-US, nl-NL)</em:creator>
     <em:homepageURL>http://extensions.sanjer.nl/?page=tb_cs</em:homepageURL>
