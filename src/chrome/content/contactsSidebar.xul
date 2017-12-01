@@ -42,8 +42,8 @@
 <overlay id="contactsSidebarOverlay"
   xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 
-<script type="application/x-javascript" src="contactsSidebar.js"/>
-<script type="application/x-javascript">
+<script type="application/javascript" src="contactsSidebar.js"/>
+<script type="application/javascript">
   <![CDATA[
     // Put the whole shabang in motion once thunderbird loads.
     addEventListener("load", initiateContactsSidebar, false);

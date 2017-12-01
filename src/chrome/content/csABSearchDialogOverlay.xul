@@ -39,7 +39,7 @@
 
 <overlay id="csABSearchDialog" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 
-  <script type="application/x-javascript" src="csABSearchDialog.js"/>
+  <script type="application/javascript" src="csABSearchDialog.js"/>
 
   <window id="searchAddressBookWindow" onload="csSearchOnLoad();" />
 

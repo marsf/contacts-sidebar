@@ -49,14 +49,14 @@
         title="&contactsSidebar.title.label;">
 
 <!--
-  <script type="application/x-javascript" src="settings.js"/>
+  <script type="application/javascript" src="settings.js"/>
   <iframe id="panel" src="csPrefs.xul" flex="1" />
 -->
 <!-- Contents of csPrefs.xul -->
   <!-- It was src="chrome://global/content/nsUserSettings.js" -->
-  <script type="application/x-javascript" src="nsUserSettings.js"/>
-  <script type="application/x-javascript" src="chrome://contactssidebar/content/prefs.js"/>
-  <script type="application/x-javascript" src="chrome://contactssidebar/content/settings.js"/>
+  <script type="application/javascript" src="nsUserSettings.js"/>
+  <script type="application/javascript" src="chrome://contactssidebar/content/prefs.js"/>
+  <script type="application/javascript" src="chrome://contactssidebar/content/settings.js"/>
 
   <tabbox id="csTabList">
     <tabs>
