@@ -38,41 +38,13 @@ function initCommon()
 
 function csAddPrefObservers()
 {
-  var prefBranch = Services.prefs.getBranch("extensions.contactssidebar.");
-
-  prefBranch.addObserver("search_mode",       ContactsSidebarPrefObserver, false);
-  prefBranch.addObserver("auto_populate",     ContactsSidebarPrefObserver, false);
-  prefBranch.addObserver("auto_search_query", ContactsSidebarPrefObserver, false);
-  prefBranch.addObserver("show_cc_item",      ContactsSidebarPrefObserver, false);
-  prefBranch.addObserver("show_bcc_item",     ContactsSidebarPrefObserver, false);
-  prefBranch.addObserver("multiple_composers",ContactsSidebarPrefObserver, false);
-  prefBranch.addObserver("confirm_delete",    ContactsSidebarPrefObserver, false);
-  prefBranch.addObserver("search_name",       ContactsSidebarPrefObserver, false);
-  prefBranch.addObserver("search_internet",   ContactsSidebarPrefObserver, false);
-  prefBranch.addObserver("search_phones",     ContactsSidebarPrefObserver, false);
-  prefBranch.addObserver("search_home",       ContactsSidebarPrefObserver, false);
-  prefBranch.addObserver("search_work",       ContactsSidebarPrefObserver, false);
-  prefBranch.addObserver("search_other",      ContactsSidebarPrefObserver, false);
+  Services.prefs.addObserver("extensions.contactssidebar.", ContactsSidebarPrefObserver, false);
 }
 
 
 function csRemovePrefObservers()
 {
-  var prefBranch = Services.prefs.getBranch("extensions.contactssidebar.");
-
-  prefBranch.removeObserver("search_mode",       ContactsSidebarPrefObserver);
-  prefBranch.removeObserver("auto_populate",     ContactsSidebarPrefObserver);
-  prefBranch.removeObserver("auto_search_query", ContactsSidebarPrefObserver);
-  prefBranch.removeObserver("show_cc_item",      ContactsSidebarPrefObserver);
-  prefBranch.removeObserver("show_bcc_item",     ContactsSidebarPrefObserver);
-  prefBranch.removeObserver("multiple_composers",ContactsSidebarPrefObserver);
-  prefBranch.removeObserver("confirm_delete",    ContactsSidebarPrefObserver);
-  prefBranch.removeObserver("search_name",       ContactsSidebarPrefObserver);
-  prefBranch.removeObserver("search_internet",   ContactsSidebarPrefObserver);
-  prefBranch.removeObserver("search_phones",     ContactsSidebarPrefObserver);
-  prefBranch.removeObserver("search_home",       ContactsSidebarPrefObserver);
-  prefBranch.removeObserver("search_work",       ContactsSidebarPrefObserver);
-  prefBranch.removeObserver("search_other",      ContactsSidebarPrefObserver);
+  Services.prefs.removeObserver("extensions.contactssidebar.", ContactsSidebarPrefObserver);
 }
 
 
@@ -83,43 +55,45 @@ const ContactsSidebarPrefObserver =
     if (topic == "nsPref:changed") {
       switch (prefName)
       {
-        case "auto_populate":
+        case "extensions.contactssidebar.auto_populate":
           gUseDefaultSearch = nsPreferences.getBoolPref(prefName, true);
           break;
 
-        case "auto_search_query":
+        case "extensions.contactssidebar.auto_search_query":
           gDefaultSearch = nsPreferences.copyUnicharPref(prefName, "*");
           break;
 
-        case "show_cc_item":
-        case "show_bcc_item":
+        case "extensions.contactssidebar.show_cc_item":
+        case "extensions.contactssidebar.show_bcc_item":
           setMenuOptionsVisibility();
           break;
 
-        case "multiple_composers":
+        case "extensions.contactssidebar.multiple_composers":
           gUseMultipleComposers = nsPreferences.getBoolPref(prefName, true);
           break;
-        case "confirm_delete":
+        case "extensions.contactssidebar.confirm_delete":
           gConfirmDelete = nsPreferences.getIntPref(prefName, 1);
           break;
-        case "search_name":
+        case "extensions.contactssidebar.search_name":
           gSearchRange[NAME] = nsPreferences.getBoolPref(prefName, true);
           break;
-        case "search_internet":
+        case "extensions.contactssidebar.search_internet":
           gSearchRange[INTERNET] = nsPreferences.getBoolPref(prefName, true);
           break;
-        case "search_phones":
+        case "extensions.contactssidebar.search_phones":
           gSearchRange[PHONES] = nsPreferences.getBoolPref(prefName, true);
           break;
-        case "search_home":
+        case "extensions.contactssidebar.search_home":
           gSearchRange[HOME] = nsPreferences.getBoolPref(prefName, true);
           break;
-        case "search_work":
+        case "extensions.contactssidebar.search_work":
           gSearchRange[WORK] = nsPreferences.getBoolPref(prefName, true);
           break;
-        case "search_other":
+        case "extensions.contactssidebar.search_other":
           gSearchRange[OTHER] = nsPreferences.getBoolPref(prefName, true);
           break;
+        default:
+          console.log("Unknown prefs has changed:", prefName);
       }
     }
   }
