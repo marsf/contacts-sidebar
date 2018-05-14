@@ -54,7 +54,7 @@
     </em:targetApplication>
     
     <!-- Front End MetaData -->
-    <em:name>Contacts Sidebar JP (20171130)</em:name>
+    <em:name>Contacts Sidebar JP (20180514)</em:name>
     <em:description>Displays the address books in a sidebar in the 3-pane-window.</em:description>
     <em:creator>Jeroen Peters (en-US, nl-NL)</em:creator>
     <em:homepageURL>http://extensions.sanjer.nl/?page=tb_cs</em:homepageURL>
