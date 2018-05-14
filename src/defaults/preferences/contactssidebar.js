@@ -1,1 +1,13 @@
 pref("extensions.contactssidebar2@marsf.jp.description", "chrome://contactssidebar/locale/csExtension.properties");
+pref("extensions.contactssidebar.multiple_composers", false);
+pref("extensions.contactssidebar.confirm_delete", 1);
+pref("extensions.contactssidebar.show_cc_item", true);
+pref("extensions.contactssidebar.show_bcc_item", true);
+pref("extensions.contactssidebar.search_name", true);
+pref("extensions.contactssidebar.search_internet", true);
+pref("extensions.contactssidebar.search_phones", true);
+pref("extensions.contactssidebar.search_home", true);
+pref("extensions.contactssidebar.search_work", true);
+pref("extensions.contactssidebar.search_other", true);
+pref("extensions.contactssidebar.auto_populate", true);
+pref("extensions.contactssidebar.auto_search_query", "*");
