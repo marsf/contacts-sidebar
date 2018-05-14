@@ -11,12 +11,12 @@
  **/
 var nsPreferences = {
   get mPrefService() {
+    /*
     return Components.classes["@mozilla.org/preferences-service;1"]
                      .getService(Components.interfaces.nsIPrefBranch);
-    /*
+    */
     return this._prefs ||
            (this._prefs = Services.prefs.getBranch("extensions.contactssidebar."));
-    */
   },
 
   setBoolPref: function (aPrefName, aPrefValue) {

@@ -13,10 +13,9 @@
         title="&contactsSidebar.title.label;">
 
 <!-- Contents of csPrefs.xul -->
-  <!-- It was src="chrome://global/content/nsUserSettings.js" -->
-  <script type="application/javascript" src="chrome://contactssidebar/content/nsUserSettings.js"/>
-  <script type="application/javascript" src="chrome://contactssidebar/content/prefs.js"/>
-  <script type="application/javascript" src="chrome://contactssidebar/content/settings.js"/>
+  <script type="application/javascript" src="nsUserSettings.js"/>
+  <script type="application/javascript" src="prefs.js"/>
+  <script type="application/javascript" src="settings.js"/>
 
   <tabbox id="csTabList">
     <tabs>
@@ -29,7 +28,7 @@
         <groupbox align="start">
           <caption label="&contactsSidebar.dragAndDrop.label;"/>
           <checkbox id="useMultipleComposers" label="&contactsSidebar.multipleComposers.label;"
-                    prefstring="contactssidebar.multiple_composers" prefdefval="false"
+                    prefstring="multiple_composers" prefdefval="false"
                     accesskey="&contactsSidebar.multipleComposers.accesskey;"/>
           <separator class="thin"/>
         </groupbox>
@@ -37,7 +36,7 @@
         <groupbox align="start">
           <caption label="&contactsSidebar.confirmDeleteCaption.label;"/>
           <label value="&contactsSidebar.confirmDelete.label;"/>
-          <radiogroup id="confirmDelete" class="indent" prefstring="contactssidebar.confirm_delete" prefdefval="1">
+          <radiogroup id="confirmDelete" class="indent" prefstring="confirm_delete" prefdefval="1">
             <radio id="allwaysConfirm" value="0" 
                   label="&contactsSidebar.confirmAlways.label;" accesskey="&contactsSidebar.confirmAlways.accesskey;"/>
             <radio id="allwaysConfirm" value="1" 
@@ -53,10 +52,10 @@
           <label value="&contactsSidebar.addMenuItems.label;"/>
           <vbox class="indent">
             <checkbox id="showCcItem" label="&contactsSidebar.showCcItem.label;"
-                      prefstring="contactssidebar.show_cc_item" prefdefval="true"
+                      prefstring="show_cc_item" prefdefval="true"
                       accesskey="&contactsSidebar.showCcItem.accesskey;"/>
             <checkbox id="showBccItem" label="&contactsSidebar.showBccItem.label;"
-                      prefstring="contactssidebar.show_bcc_item" prefdefval="true"
+                      prefstring="show_bcc_item" prefdefval="true"
                       accesskey="&contactsSidebar.showBccItem.accesskey;"/>
           </vbox>
           <separator class="thin"/>
@@ -71,24 +70,24 @@
           <hbox class="indent">
             <vbox>
               <checkbox id="searchName" label="&contactsSidebar.searchName.label;"
-                        prefstring="contactssidebar.search_name" prefdefval="true"
+                        prefstring="search_name" prefdefval="true"
                         accesskey="&contactsSidebar.searchName.accesskey;"/>
               <checkbox id="searchInternet" label="&contactsSidebar.searchInternet.label;"
-                        prefstring="contactssidebar.search_internet" prefdefval="true"
+                        prefstring="search_internet" prefdefval="true"
                         accesskey="&contactsSidebar.searchInternet.accesskey;"/>
               <checkbox id="searchPhones" label="&contactsSidebar.searchPhones.label;"
-                        prefstring="contactssidebar.search_phones" prefdefval="true"
+                        prefstring="search_phones" prefdefval="true"
                         accesskey="&contactsSidebar.searchPhones.accesskey;"/>
             </vbox>
             <vbox>
               <checkbox id="searchHome" label="&contactsSidebar.searchHome.label;"
-                        prefstring="contactssidebar.search_home" prefdefval="true"
+                        prefstring="search_home" prefdefval="true"
                         accesskey="&contactsSidebar.searchHome.accesskey;"/>
               <checkbox id="searchWork" label="&contactsSidebar.searchWork.label;"
-                        prefstring="contactssidebar.search_work" prefdefval="true"
+                        prefstring="search_work" prefdefval="true"
                         accesskey="&contactsSidebar.searchWork.accesskey;"/>
               <checkbox id="searchOther" label="&contactsSidebar.searchOther.label;"
-                        prefstring="contactssidebar.search_other" prefdefval="true"
+                        prefstring="search_other" prefdefval="true"
                         accesskey="&contactsSidebar.searchOther.accesskey;"/>
             </vbox>
           </hbox>
@@ -100,7 +99,7 @@
           
           <hbox align="center">
             <checkbox id="autoPopulate" label="&contactsSidebar.autoPopulate.label;"
-                      prefstring="contactssidebar.auto_populate" prefdefval="true"
+                      prefstring="auto_populate" prefdefval="true"
                       accesskey="&contactsSidebar.autoPopulate.accesskey;"
                       oncommand="enableAutoSearchQuery(this.checked);"/>
           </hbox>
@@ -108,7 +107,7 @@
           <hbox align="center" class="indent">
             <label value="&contactsSidebar.autoSearch1.label;"/>
             <textbox id="autoSearchQuery" size="4"
-                    prefstring="contactssidebar.auto_search_query" prefdefval="*"
+                    prefstring="auto_search_query" prefdefval="*"
                     onfocus="this.select();" onclick="this.select();"/>
             <label value="&contactsSidebar.autoSearch2.label;"/>
           </hbox>

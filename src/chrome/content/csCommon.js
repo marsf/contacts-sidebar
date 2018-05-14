@@ -1,40 +1,3 @@
-/* ***** BEGIN LICENSE BLOCK *****
- * Version: MPL 1.1/GPL 2.0/LGPL 2.1
- *
- * The contents of this file are subject to the Mozilla Public License Version
- * 1.1 (the "License"); you may not use this file except in compliance with
- * the License. You may obtain a copy of the License at
- * http://www.mozilla.org/MPL/
- *
- * Software distributed under the License is distributed on an "AS IS" basis,
- * WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
- * for the specific language governing rights and limitations under the
- * License.
- *
- * The Original Code is Contacts Sidebar.
- *
- * The Initial Developer of the Original Code is Jeroen Peters.
- * Portions created by the Initial Developer are Copyright (C) 2004
- * the Initial Developer. All Rights Reserved.
- *
- * Contributor(s):
- *  Jeroen Peters <jpeters@coldmail.nl>
- *  Masahiko Imanaka <chimantaea_mirabilis@yahoo.co.jp>
- *
- * Alternatively, the contents of this file may be used under the terms of
- * either the GNU General Public License Version 2 or later (the "GPL"), or
- * the GNU Lesser General Public License Version 2.1 or later (the "LGPL"),
- * in which case the provisions of the GPL or the LGPL are applicable instead
- * of those above. If you wish to allow use of your version of this file only
- * under the terms of either the GPL or the LGPL, and not to allow others to
- * use your version of this file under the terms of the MPL, indicate your
- * decision by deleting the provisions above and replace them with the notice
- * and other provisions required by the GPL or the LGPL. If you do not delete
- * the provisions above, a recipient may use your version of this file under
- * the terms of any one of the MPL, the GPL or the LGPL.
- *
- * ***** END LICENSE BLOCK ***** */
-
 // List/card selections in the results pane.
 const kMultipleCardsOnly = 5;
 const kSingleCardOnly = 6;
@@ -58,62 +21,58 @@ function initCommon()
   gContactsPanelBundle = srGetStrBundle("chrome://contactssidebar/locale/contactsPanel.properties");
   gAddressBookBundle = srGetStrBundle("chrome://messenger/locale/addressbook/addressBook.properties");
   gUseSecondEmail = false;
-  gConfirmDelete = nsPreferences.getIntPref("contactssidebar.confirm_delete", 1);
+  gConfirmDelete = nsPreferences.getIntPref("confirm_delete", 1);
   
-  gUseDefaultSearch = nsPreferences.getBoolPref("contactssidebar.auto_populate", true);
-  gDefaultSearch = nsPreferences.copyUnicharPref("contactssidebar.auto_search_query", "*");
-  gUseMultipleComposers = nsPreferences.getBoolPref("contactssidebar.multiple_composers", false);
+  gUseDefaultSearch = nsPreferences.getBoolPref("auto_populate", true);
+  gDefaultSearch = nsPreferences.copyUnicharPref("auto_search_query", "*");
+  gUseMultipleComposers = nsPreferences.getBoolPref("multiple_composers", false);
   
-  gSearchRange[NAME] = nsPreferences.getBoolPref("contactssidebar.search_name", true);
-  gSearchRange[INTERNET] = nsPreferences.getBoolPref("contactssidebar.search_internet", true);
-  gSearchRange[PHONES] = nsPreferences.getBoolPref("contactssidebar.search_phones", true);
-  gSearchRange[HOME] = nsPreferences.getBoolPref("contactssidebar.search_home", true);
-  gSearchRange[WORK] = nsPreferences.getBoolPref("contactssidebar.search_work", true);
-  gSearchRange[OTHER] = nsPreferences.getBoolPref("contactssidebar.search_other", true);  
+  gSearchRange[NAME] = nsPreferences.getBoolPref("search_name", true);
+  gSearchRange[INTERNET] = nsPreferences.getBoolPref("search_internet", true);
+  gSearchRange[PHONES] = nsPreferences.getBoolPref("search_phones", true);
+  gSearchRange[HOME] = nsPreferences.getBoolPref("search_home", true);
+  gSearchRange[WORK] = nsPreferences.getBoolPref("search_work", true);
+  gSearchRange[OTHER] = nsPreferences.getBoolPref("search_other", true);
 }
 
 
 function csAddPrefObservers()
 {
-  var prefService = Components.classes['@mozilla.org/preferences-service;1']
-                              .getService(Components.interfaces.nsIPrefService);
-  var prefBranch = prefService.getBranch(null).QueryInterface(Components.interfaces.nsIPrefBranchInternal);
+  var prefBranch = Services.prefs.getBranch("extensions.contactssidebar.");
 
-  prefBranch.addObserver("contactssidebar.search_mode",       ContactsSidebarPrefObserver, false);
-  prefBranch.addObserver("contactssidebar.auto_populate",     ContactsSidebarPrefObserver, false);
-  prefBranch.addObserver("contactssidebar.auto_search_query", ContactsSidebarPrefObserver, false);
-  prefBranch.addObserver("contactssidebar.show_cc_item",      ContactsSidebarPrefObserver, false);
-  prefBranch.addObserver("contactssidebar.show_bcc_item",     ContactsSidebarPrefObserver, false);
-  prefBranch.addObserver("contactssidebar.multiple_composers",ContactsSidebarPrefObserver, false);
-  prefBranch.addObserver("contactssidebar.confirm_delete",    ContactsSidebarPrefObserver, false);
-  prefBranch.addObserver("contactssidebar.search_name",       ContactsSidebarPrefObserver, false);
-  prefBranch.addObserver("contactssidebar.search_internet",   ContactsSidebarPrefObserver, false);
-  prefBranch.addObserver("contactssidebar.search_phones",     ContactsSidebarPrefObserver, false);
-  prefBranch.addObserver("contactssidebar.search_home",       ContactsSidebarPrefObserver, false);
-  prefBranch.addObserver("contactssidebar.search_work",       ContactsSidebarPrefObserver, false);
-  prefBranch.addObserver("contactssidebar.search_other",      ContactsSidebarPrefObserver, false);
+  prefBranch.addObserver("search_mode",       ContactsSidebarPrefObserver, false);
+  prefBranch.addObserver("auto_populate",     ContactsSidebarPrefObserver, false);
+  prefBranch.addObserver("auto_search_query", ContactsSidebarPrefObserver, false);
+  prefBranch.addObserver("show_cc_item",      ContactsSidebarPrefObserver, false);
+  prefBranch.addObserver("show_bcc_item",     ContactsSidebarPrefObserver, false);
+  prefBranch.addObserver("multiple_composers",ContactsSidebarPrefObserver, false);
+  prefBranch.addObserver("confirm_delete",    ContactsSidebarPrefObserver, false);
+  prefBranch.addObserver("search_name",       ContactsSidebarPrefObserver, false);
+  prefBranch.addObserver("search_internet",   ContactsSidebarPrefObserver, false);
+  prefBranch.addObserver("search_phones",     ContactsSidebarPrefObserver, false);
+  prefBranch.addObserver("search_home",       ContactsSidebarPrefObserver, false);
+  prefBranch.addObserver("search_work",       ContactsSidebarPrefObserver, false);
+  prefBranch.addObserver("search_other",      ContactsSidebarPrefObserver, false);
 }
 
 
 function csRemovePrefObservers()
 {
-  var prefService = Components.classes['@mozilla.org/preferences-service;1']
-                              .getService(Components.interfaces.nsIPrefService);
-  var prefBranch = prefService.getBranch(null).QueryInterface(Components.interfaces.nsIPrefBranchInternal);
+  var prefBranch = Services.prefs.getBranch("extensions.contactssidebar.");
 
-  prefBranch.removeObserver("contactssidebar.search_mode",       ContactsSidebarPrefObserver);
-  prefBranch.removeObserver("contactssidebar.auto_populate",     ContactsSidebarPrefObserver);
-  prefBranch.removeObserver("contactssidebar.auto_search_query", ContactsSidebarPrefObserver);
-  prefBranch.removeObserver("contactssidebar.show_cc_item",      ContactsSidebarPrefObserver);
-  prefBranch.removeObserver("contactssidebar.show_bcc_item",     ContactsSidebarPrefObserver);
-  prefBranch.removeObserver("contactssidebar.multiple_composers",ContactsSidebarPrefObserver);
-  prefBranch.removeObserver("contactssidebar.confirm_delete",    ContactsSidebarPrefObserver);
-  prefBranch.removeObserver("contactssidebar.search_name",       ContactsSidebarPrefObserver);
-  prefBranch.removeObserver("contactssidebar.search_internet",   ContactsSidebarPrefObserver);
-  prefBranch.removeObserver("contactssidebar.search_phones",     ContactsSidebarPrefObserver);
-  prefBranch.removeObserver("contactssidebar.search_home",       ContactsSidebarPrefObserver);
-  prefBranch.removeObserver("contactssidebar.search_work",       ContactsSidebarPrefObserver);
-  prefBranch.removeObserver("contactssidebar.search_other",      ContactsSidebarPrefObserver);
+  prefBranch.removeObserver("search_mode",       ContactsSidebarPrefObserver);
+  prefBranch.removeObserver("auto_populate",     ContactsSidebarPrefObserver);
+  prefBranch.removeObserver("auto_search_query", ContactsSidebarPrefObserver);
+  prefBranch.removeObserver("show_cc_item",      ContactsSidebarPrefObserver);
+  prefBranch.removeObserver("show_bcc_item",     ContactsSidebarPrefObserver);
+  prefBranch.removeObserver("multiple_composers",ContactsSidebarPrefObserver);
+  prefBranch.removeObserver("confirm_delete",    ContactsSidebarPrefObserver);
+  prefBranch.removeObserver("search_name",       ContactsSidebarPrefObserver);
+  prefBranch.removeObserver("search_internet",   ContactsSidebarPrefObserver);
+  prefBranch.removeObserver("search_phones",     ContactsSidebarPrefObserver);
+  prefBranch.removeObserver("search_home",       ContactsSidebarPrefObserver);
+  prefBranch.removeObserver("search_work",       ContactsSidebarPrefObserver);
+  prefBranch.removeObserver("search_other",      ContactsSidebarPrefObserver);
 }
 
 
@@ -124,41 +83,41 @@ const ContactsSidebarPrefObserver =
     if (topic == "nsPref:changed") {
       switch (prefName)
       {
-        case "contactssidebar.auto_populate":
+        case "auto_populate":
           gUseDefaultSearch = nsPreferences.getBoolPref(prefName, true);
           break;
 
-        case "contactssidebar.auto_search_query":
+        case "auto_search_query":
           gDefaultSearch = nsPreferences.copyUnicharPref(prefName, "*");
           break;
 
-        case "contactssidebar.show_cc_item":
-        case "contactssidebar.show_bcc_item":
+        case "show_cc_item":
+        case "show_bcc_item":
           setMenuOptionsVisibility();
           break;
 
-        case "contactssidebar.multiple_composers":
+        case "multiple_composers":
           gUseMultipleComposers = nsPreferences.getBoolPref(prefName, true);
           break;
-        case "contactssidebar.confirm_delete":
+        case "confirm_delete":
           gConfirmDelete = nsPreferences.getIntPref(prefName, 1);
           break;
-        case "contactssidebar.search_name":
+        case "search_name":
           gSearchRange[NAME] = nsPreferences.getBoolPref(prefName, true);
           break;
-        case "contactssidebar.search_internet":
+        case "search_internet":
           gSearchRange[INTERNET] = nsPreferences.getBoolPref(prefName, true);
           break;
-        case "contactssidebar.search_phones":
+        case "search_phones":
           gSearchRange[PHONES] = nsPreferences.getBoolPref(prefName, true);
           break;
-        case "contactssidebar.search_home":
+        case "search_home":
           gSearchRange[HOME] = nsPreferences.getBoolPref(prefName, true);
           break;
-        case "contactssidebar.search_work":
+        case "search_work":
           gSearchRange[WORK] = nsPreferences.getBoolPref(prefName, true);
           break;
-        case "contactssidebar.search_other":
+        case "search_other":
           gSearchRange[OTHER] = nsPreferences.getBoolPref(prefName, true);
           break;
       }
@@ -178,12 +137,12 @@ function setContext()
   setWriteSubMenus("writeItem", "writeMenu", "primaryEmailItem", "additionalEmailItem",
     hasAddEmail, selectedCards);
 
-  if ( nsPreferences.getBoolPref("contactssidebar.show_cc_item",  true) ) {
+  if ( nsPreferences.getBoolPref("show_cc_item", true) ) {
     setWriteSubMenus("writeCcItem", "writeCcMenu", "primaryEmailCcItem", "additionalEmailCcItem",
       hasAddEmail, selectedCards);
   }
 
-  if ( nsPreferences.getBoolPref("contactssidebar.show_bcc_item",  true) ) {
+  if ( nsPreferences.getBoolPref("show_bcc_item", true) ) {
     setWriteSubMenus("writeBccItem", "writeBccMenu", "primaryEmailBccItem", "additionalEmailBccItem",
       hasAddEmail, selectedCards);
   }
@@ -247,8 +206,8 @@ function setWriteSubMenus(item, menu, primary, additional, hasAddEmail, cards)
 
 function setMenuOptionsVisibility() 
 {
-  var ccValue  = nsPreferences.getBoolPref("contactssidebar.show_cc_item",  true);
-  var bccValue = nsPreferences.getBoolPref("contactssidebar.show_bcc_item", true);
+  var ccValue  = nsPreferences.getBoolPref("show_cc_item",  true);
+  var bccValue = nsPreferences.getBoolPref("show_bcc_item", true);
   
   setMenuOptionVisibility("writeCcItem", "writeCcMenu",  ccValue);
   setMenuOptionVisibility("writeBccItem", "writeBccMenu", bccValue);
@@ -516,8 +475,8 @@ function csOnKeypress(aEvent)
         gContactsTree.view.selection.selectAll();
       }
       break;
-/*
      default:
+/*
        var S = "";
        for (var i in aEvent)
          S += i + ": " + aEvent[i] + "\n";

@@ -22,7 +22,7 @@ function InitializeGlobalVariables()
   gAddressBookBundle = document.getElementById("bundle_addressBook");
   csAddPrefObservers();
   
-  gUseMultipleComposers = nsPreferences.getBoolPref("contactssidebar.multiple_composers", false);
+  gUseMultipleComposers = nsPreferences.getBoolPref("multiple_composers", false);
 }
 
 
