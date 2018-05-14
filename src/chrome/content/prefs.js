@@ -39,12 +39,12 @@ function initPrefs()
   var prefElements = document.getElementsByAttribute("prefstring", "*");
   for (var i=0; i<prefElements.length; i++ )
   {
-    var prefstring    = prefElements[i].getAttribute( "prefstring" );
-    var prefid        = prefElements[i].getAttribute( "id" );
-    var preftype      = prefElements[i].getAttribute( "preftype" );
-    var prefdefval    = prefElements[i].getAttribute( "prefdefval" );
-    var prefattribute = prefElements[i].getAttribute( "prefattribute" );
-    var elt           = prefElements[i].localName;
+    var prefstring    = prefElements[i].getAttribute( "prefstring" ),
+        prefid        = prefElements[i].getAttribute( "id" ),
+        preftype      = prefElements[i].getAttribute( "preftype" ),
+        prefdefval    = prefElements[i].getAttribute( "prefdefval" ),
+        prefattribute = prefElements[i].getAttribute( "prefattribute" ),
+        elt           = prefElements[i].localName;
 
     if (!preftype)
       preftype = getPreftype(elt);
@@ -67,7 +67,7 @@ function initPrefs()
         break;
     }
     if (elt == "radiogroup")
-      document.getElementById(prefid).selectedIndex = prefvalue
+      document.getElementById(prefid).selectedIndex = prefvalue;
     else
       prefElements[i].setAttribute(prefattribute, prefvalue);
   }
@@ -79,11 +79,12 @@ function savePrefs()
   var prefElements = document.getElementsByAttribute("prefstring", "*");
   for (var i=0; i<prefElements.length; i++ )  
   {
-    var prefstring    = prefElements[i].getAttribute( "prefstring" );
-    var prefid        = prefElements[i].getAttribute( "id" );
-    var preftype      = prefElements[i].getAttribute( "preftype" );
-    var prefattribute = prefElements[i].getAttribute( "prefattribute" );
-    var elt           = prefElements[i].localName;
+    var prefstring    = prefElements[i].getAttribute( "prefstring" ),
+        prefid        = prefElements[i].getAttribute( "id" ),
+        preftype      = prefElements[i].getAttribute( "preftype" ),
+        prefattribute = prefElements[i].getAttribute( "prefattribute" ),
+        elt           = prefElements[i].localName,
+        prefvalue;
     
     if (!preftype)
       preftype = getPreftype(elt);
@@ -91,11 +92,11 @@ function savePrefs()
       prefattribute = getPrefattribute(elt);
     
     if (elt == "radiogroup")
-      var prefvalue = document.getElementById(prefid).selectedIndex;
+      prefvalue = document.getElementById(prefid).selectedIndex;
     else if (elt == "textbox")
-      var prefvalue = document.getElementById(prefid).value;
+      prefvalue = document.getElementById(prefid).value;
     else
-      var prefvalue = prefElements[i].getAttribute(prefattribute);
+      prefvalue = prefElements[i].getAttribute(prefattribute);
     
     if (preftype == "bool")
       prefvalue = prefvalue == "true" ? true : false;

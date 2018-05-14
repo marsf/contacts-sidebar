@@ -70,7 +70,7 @@ function csAbPanelLoad()
   searchInput.setAttribute("oninput", "csOnSearchInput(false);");
   searchInput.setAttribute("onkeypress", "csOnSearchKeyPress(event);");
   InitMenuPopupValue();
-  searchInput.init();
+  //searchInput.init();
   
   SetUnload();
 }
@@ -94,6 +94,7 @@ function AddTreeContextMenu()
   var popup = document.getElementById("cardProperties");
   if (popup)
   {
+    var menu, subPopup;
     // Remove original popup menu items
     while ( popup.firstChild )
       popup.removeChild( popup.firstChild );
@@ -113,10 +114,10 @@ function AddTreeContextMenu()
                 "contactsSidebar.newmsgButton.label",
                 "contactsSidebar.newmsgButton.accesskey",
                 "csAddSelectedAddresses('addr_to', false);");
-    var menu = AddMenu(popup, "writeMenu",
+    menu = AddMenu(popup, "writeMenu",
                        "contactsSidebar.newmsgButton.label",
                        "contactsSidebar.newmsgButton.accesskey");
-    var subPopup = AddMenuPopup(menu);
+    subPopup = AddMenuPopup(menu);
     AddMenuItem(subPopup, "primaryEmailItem", "", "", "csAddSelectedAddresses('addr_to', false);");
     AddMenuItem(subPopup, "additionalEmailItem", "", "", "csAddSelectedAddresses('addr_to', true);");
     
@@ -125,10 +126,10 @@ function AddTreeContextMenu()
                 "contactsSidebar.newmsgCCButton.label",
                 "contactsSidebar.newmsgCCButton.accesskey",
                 "csAddSelectedAddresses('addr_cc', false);");
-    var menu = AddMenu(popup, "writeCcMenu",
+    menu = AddMenu(popup, "writeCcMenu",
                        "contactsSidebar.newmsgCCButton.label",
                        "contactsSidebar.newmsgCCButton.accesskey");
-    var subPopup = AddMenuPopup(menu);
+    subPopup = AddMenuPopup(menu);
     AddMenuItem(subPopup, "primaryEmailCcItem", "", "", "csAddSelectedAddresses('addr_cc', false);");
     AddMenuItem(subPopup, "additionalEmailCcItem", "", "", "csAddSelectedAddresses('addr_cc', true);");
     
@@ -137,10 +138,10 @@ function AddTreeContextMenu()
                 "contactsSidebar.newmsgBCCButton.label",
                 "contactsSidebar.newmsgBCCButton.accesskey",
                 "csAddSelectedAddresses('addr_bcc', false);");
-    var menu = AddMenu(popup, "writeBccMenu",
+    menu = AddMenu(popup, "writeBccMenu",
                        "contactsSidebar.newmsgBCCButton.label",
                        "contactsSidebar.newmsgBCCButton.accesskey");
-    var subPopup = AddMenuPopup(menu);
+    subPopup = AddMenuPopup(menu);
     AddMenuItem(subPopup, "primaryEmailBccItem", "", "", "csAddSelectedAddresses('addr_bcc', false);");
     AddMenuItem(subPopup, "additionalEmailBccItem", "", "", "csAddSelectedAddresses('addr_bcc', true);");
     
@@ -238,13 +239,13 @@ function AddMenuXUL(elementName, parentNode, id, label, accessKey, command, hidd
 {
   var itemNode = document.createElement( elementName );
   
-  if ( id && id != "" )
+  if ( id && id !== "" )
     itemNode.setAttribute("id", id);
-  if ( label && label != "")
+  if ( label && label !== "")
     itemNode.setAttribute("label", bundleSettings.GetStringFromName(label) );
-  if ( accessKey && accessKey != "")
+  if ( accessKey && accessKey !== "")
     itemNode.setAttribute("accesskey", bundleSettings.GetStringFromName(accessKey) );
-  if ( command && command != "")
+  if ( command && command !== "")
     itemNode.setAttribute("oncommand", command);
   if (hidden)
     itemNode.setAttribute("hidden", "true");
@@ -346,7 +347,7 @@ function csAbAddContactAttachment()
   
   // Add "forward contact(s)" subject
   var subjectInputElem = parent.document.getElementById("msgSubject");
-  if ( subjectInputElem.value == "" )
+  if ( subjectInputElem.value === "" )
     subjectInputElem.value = forwardInfo.subject;
 
   // Add contact(s) vcf file as attachment

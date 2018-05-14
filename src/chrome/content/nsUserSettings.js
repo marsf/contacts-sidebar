@@ -25,7 +25,7 @@ var nsPreferences = {
     try {
       return this.mPrefService.getBoolPref(aPrefName);
     } catch (e) {
-      return aDefVal != undefined ? aDefVal : null;
+      return aDefVal !== undefined ? aDefVal : null;
     }
     return null;        // quiet warnings
   },
@@ -45,7 +45,7 @@ var nsPreferences = {
       return this.mPrefService.getComplexValue(aPrefName,
                                                Components.interfaces.nsISupportsString).data;
     } catch (e) {
-      return aDefVal != undefined ? aDefVal : null;
+      return aDefVal !== undefined ? aDefVal : null;
     }
     return null;        // quiet warnings
   },
@@ -60,7 +60,7 @@ var nsPreferences = {
     try {
       return this.mPrefService.getIntPref(aPrefName);
     } catch (e) {
-      return aDefVal != undefined ? aDefVal : null;
+      return aDefVal !== undefined ? aDefVal : null;
     }
     return null;        // quiet warnings
   },
@@ -70,7 +70,7 @@ var nsPreferences = {
       return this.mPrefService.getComplexValue(aPrefName,
                                                Components.interfaces.nsIPrefLocalizedString).data;
     } catch (e) {
-      return aDefVal != undefined ? aDefVal : null;
+      return aDefVal !== undefined ? aDefVal : null;
     }
     return null;        // quiet warnings
   }

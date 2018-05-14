@@ -75,7 +75,7 @@ function buildSearchQuery(searchString, searchMode)
   var count = 0;
   for (var i=0; i<searchTerms.length; i++)
   {
-    if (searchTerms[i] != "")
+    if (searchTerms[i] !== "")
     {
       count++;
       var condition = searchModes[searchMode];
@@ -120,7 +120,7 @@ function DirPaneSelectionChangeMenulist()
 {
   if (abList && abList.selectedItem) 
   {
-    if (gSearchInput.value && (gSearchInput.value != ""))
+    if (gSearchInput.value && (gSearchInput.value !== ""))
       onEnterInSearchBar();
     else
       ChangeDirectoryByURI(abList.selectedItem.id);
@@ -176,7 +176,7 @@ function csOnSearchInput(returnKeyHit)
     onEnterInSearchBar();
   }
   else {
-    gSearchTimer = setTimeout("onEnterInSearchBar();", 800);
+    gSearchTimer = setTimeout(onEnterInSearchBar, 800);
   }
 }
 
@@ -188,7 +188,7 @@ var gSearchFocusEl = null;
 function csOnClearSearch()
 {
   // ignore the text box value if it's just showing the search criteria string
-  if (!gSearchInput.showingSearchCriteria || gSearchInput.searchMode == 4) 
+  if (!gSearchInput.showingSearchCriteria || gSearchInput.searchMode === 4) 
   {
     // save of the last focused element so that focus can be restored
     //gSearchFocusEl = gLastFocusedElement;
@@ -201,7 +201,7 @@ function csOnClearSearch()
 
     // this needs to be on a timer otherwise we end up messing up the focus while 
     // the Search("") is still happening
-    setTimeout("restoreSearchFocusAfterClear();", 0);
+    setTimeout(restoreSearchFocusAfterClear, 0);
   }
 }
 
@@ -230,7 +230,7 @@ function csOnSearchKeyPress(event)
 
 function isValidSearchQuery()
 {
-  return ( !(gSearchInput.value == "" || gSearchInput.showingSearchCriteria) );
+  return ( !(gSearchInput.value === "" || gSearchInput.showingSearchCriteria) );
 }
 
 
@@ -267,7 +267,7 @@ function onEnterInSearchBar()
 function isLdapDirectory(uri)
 {
   var ldapUrlPrefix = "moz-abldapdirectory://";
-  var result = ((uri.indexOf(ldapUrlPrefix, 0)) == 0)
+  var result = ((uri.indexOf(ldapUrlPrefix, 0)) === 0);
   
   return result;
 }
@@ -305,7 +305,7 @@ function ChangeDirectoryByURI(uri)
   }
   else {
     // the selection changes if we were switching directories.
-    ResultsPaneSelectionChanged()
+    ResultsPaneSelectionChanged();
   }
   return;
 }
@@ -318,20 +318,20 @@ function SetSearchMode( mode )
   if (menuPopup)
   {
     var menuItems = menuPopup.getElementsByAttribute('value', gSearchInput.searchMode);
-    menuItems[0].setAttribute('checked', "true")
+    menuItems[0].setAttribute('checked', "true");
   }
 }
 
 function csChangeSearchMode(aMenuItem)
 {
   // extract the label and set the search input to match it
-  var doInitSearch = gSearchInput.searchMode == 4;
-  if ( gSearchInput.searchMode != 4 )
+  var doInitSearch = gSearchInput.searchMode === 4;
+  if ( gSearchInput.searchMode !== 4 )
     gOldSearchMode = gSearchInput.searchMode;
   gSearchInput.searchMode = aMenuItem.value;
 
   var inPowerSearch = false;
-  if ( gSearchInput.searchMode == 4 )
+  if ( gSearchInput.searchMode === 4 )
   {
     // Special searchmode case, launch Adv search
     inPowerSearch = csPowerSearch( doInitSearch );
@@ -373,7 +373,7 @@ function csPowerSearch(doInitSearch)
   var chromeURL = "chrome://messenger/content/ABSearchDialog.xul";
   window.openDialog(chromeURL, "", "chrome,resizable,modal,centerscreen,dialog=no", args);
 
-  if  ( args.searchURI && args.searchURI != "" )
+  if  ( args.searchURI && args.searchURI !== "" )
   {
     // Perform the advanced search
     var sortColumn    = gAbView ? gAbView.sortColumn    : kDefaultSortColumn;

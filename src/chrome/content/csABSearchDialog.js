@@ -143,9 +143,9 @@ function CreateSearchURI()
 {
   gStatusText.setAttribute("label", "");
   gPropertiesButton.setAttribute("disabled","true");
-  gComposeButton.setAttribute("disabled","true") 
+  gComposeButton.setAttribute("disabled","true");
 
-  gSearchSession.clearScopes() 
+  gSearchSession.clearScopes();
 
   var currentAbURI = document.getElementById('abPopup').getAttribute('value');
 
@@ -161,16 +161,16 @@ function CreateSearchURI()
     var searchTerm = gSearchSession.searchTerms.GetElementAt(i).QueryInterface(nsIMsgSearchTerm);
     
     // No need to build a seatrch string when the value isempty
-    if ( searchTerm.value.str == "" )
+    if ( searchTerm.value.str === "" )
       continue;
     else
       resultCount++;
 
     // get the "and" / "or" value from the first term
-    if (i == 0)
+    if (i === 0)
     {
       if (searchTerm.booleanAnd)
-        searchUri += "and" 
+        searchUri += "and";
       else
         searchUri += "or";
     }
@@ -252,20 +252,20 @@ function CreateSearchURI()
       opStr = "=";
       break;
     case nsMsgSearchOp.Isnt:
-      opStr = "!=" 
+      opStr = "!=";
       break;
     case nsMsgSearchOp.BeginsWith:
-      opStr = "bw" 
+      opStr = "bw";
       break;
     case nsMsgSearchOp.EndsWith:
-      opStr = "ew" 
+      opStr = "ew";
       break;
     case nsMsgSearchOp.SoundsLike:
-      opStr = "~=" 
+      opStr = "~=";
       break;
     default:
       opStr = "c";
-      break 
+      break;
     }
 
     // currently, we can't do "and" and "or" searches at the same time
@@ -298,7 +298,7 @@ function HideElement( elemId )
 function InitSearch( URI )
 {
   var components = URI.split("?(");
-  if ( components.length == 2 )
+  if ( components.length === 2 )
   {
     // Extract boolean operator and search terms
     var re = new RegExp( "([^\(]*)(.*)" );
@@ -320,18 +320,18 @@ function InitSearch( URI )
         termObjects[i] = termObj;
       }
 
-      for ( var i=0; i<termObjects.length; i++)
+      for ( i=0; i<termObjects.length; i++)
       {
         var term = gSearchSession.createTerm();
 
         term.matchAll = false;
-        if( i == 0 )
+        if( i === 0 )
           term.booleanAnd = ( operator == "and" );
         else
-          term.booleanAnd = false
+          term.booleanAnd = false;
 
-        value = term.value;
-        value.str = termObjects[i].value;;
+        var value = term.value;
+        value.str = termObjects[i].value;
         term.value = value;
 
         if ( gSearchPhoneticName == "false" && FieldMatch( ["DisplayName","FirstName","LastName","NickName","_AimScreenName"], termObjects, i ) )
@@ -421,7 +421,7 @@ function FieldMatch( fields, termObjects, index )
     result = index+i < termObjects.length && 
              fields[i] == termObjects[index+i].attrib;
 
-    if ( i != 0  )
+    if ( i !== 0  )
        result = result && termObjects[index+i].op == op && termObjects[index+i].value == value;
   }
 

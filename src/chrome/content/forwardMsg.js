@@ -162,7 +162,7 @@ function ComposeMessage(type, format, messageArray)
       else
       {
         if (i) 
-          uri += ","
+          uri += ",";
         uri += messageUri;
       }
     }

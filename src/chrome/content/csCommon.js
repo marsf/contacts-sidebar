@@ -119,7 +119,7 @@ function csRemovePrefObservers()
 
 const ContactsSidebarPrefObserver =
 {
-  observe: function(subject, topic, prefName) {
+  observe: function pref_observe(subject, topic, prefName) {
     // verify that we're changing the contacts sidebar config pref
     if (topic == "nsPref:changed") {
       switch (prefName)
@@ -169,8 +169,8 @@ const ContactsSidebarPrefObserver =
 
 function setContext()
 {
-  var writeItem = document.getElementById("writeItem");
-  var writeMenu = document.getElementById("writeMenu");
+  //var writeItem = document.getElementById("writeItem");
+  //var writeMenu = document.getElementById("writeMenu");
 
   var selectedCards = GetSelectedAbCards();
   var hasAddEmail = cardsHasSecondEmail(selectedCards);
@@ -189,7 +189,7 @@ function setContext()
   }
 
   // Disable the "properties" item if multiple contacts are selected
-  if (selectedCards.length == 1) {
+  if (selectedCards.length === 1) {
     document.getElementById("propertiesItem").removeAttribute("disabled");
   } else {
     document.getElementById("propertiesItem").setAttribute("disabled", true);
@@ -203,7 +203,7 @@ function cardsHasSecondEmail(cards)
 
   for (var i=0; i<cards.length; i++)
   {
-    result = cards[i].getProperty("SecondEmail", "") != "";
+    result = cards[i].getProperty("SecondEmail", "") !== "";
     if (result)
     {
       break;
@@ -221,14 +221,14 @@ function setWriteSubMenus(item, menu, primary, additional, hasAddEmail, cards)
     document.getElementById(item).hidden = true;
     document.getElementById(menu).hidden = false;
     
-    if (cards.length == 1)
+    if (cards.length === 1)
     {
       var primaryEmail = cards[0].primaryEmail;
-      if ( primaryEmail != "" )
+      if ( primaryEmail !== "" )
         document.getElementById(primary).setAttribute("label", primaryEmail);
 
       var secondEmail = cards[0].getProperty("SecondEmail", "");
-      if ( secondEmail != "" )
+      if ( secondEmail !== "" )
         document.getElementById(additional).setAttribute("label", secondEmail);
     }
     else
@@ -261,8 +261,8 @@ function setMenuOptionVisibility(menuId, submenuId, prefValue)
   if (elem) {
     elem.hidden = !prefValue;
   }
-  if (submenuId != "")
-    var elem = document.getElementById(submenuId);
+  if (submenuId !== "")
+    elem = document.getElementById(submenuId);
     if (elem) {
       elem.hidden = !prefValue;
     }
@@ -368,7 +368,7 @@ function AbDelete()
   var promptService = Components.classes['@mozilla.org/embedcomp/prompt-service;1'].getService(Components.interfaces.nsIPromptService);
 
   // Only ask for confirmation if this is wanted
-  if (gConfirmDelete != 2)
+  if (gConfirmDelete !== 2)
   {
     var confirmDeleteMessage = "";
     
@@ -381,12 +381,12 @@ function AbDelete()
       confirmDeleteMessage = gContactsPanelBundle.GetStringFromName("contactsSidebar.confirmDeleteMailingList");
       
     // If confirm delete is wanted for all contacts then prompt users for deletion.
-    else if (gConfirmDelete == 0 && types == kMultipleCardsOnly)
+    else if (gConfirmDelete === 0 && types == kMultipleCardsOnly)
       confirmDeleteMessage = gContactsPanelBundle.GetStringFromName("contactsSidebar.confirmDeleteCards");
-    else if (gConfirmDelete == 0 && types == kSingleCardOnly)
+    else if (gConfirmDelete === 0 && types == kSingleCardOnly)
       confirmDeleteMessage = gContactsPanelBundle.GetStringFromName("contactsSidebar.confirmDeleteCard");
 
-    if (confirmDeleteMessage != "")
+    if (confirmDeleteMessage !== "")
       if (!promptService.confirm(window, null, confirmDeleteMessage))
         return;
   }
@@ -398,9 +398,9 @@ function AbDelete()
 function cardToFilename(card, ext) {
   var result = "";
   
-  if (card.primaryEmail != "") {
+  if (card.primaryEmail !== "") {
     result = card.primaryEmail;
-  } else if (card.getProperty("SecondEmail", "") != "") {
+  } else if (card.getProperty("SecondEmail", "") !== "") {
     result = card.getProperty("SecondEmail", "");
   } else {
     result = "nsmail";
@@ -413,7 +413,7 @@ function cardToFilename(card, ext) {
     result = result;
   }
 
-  if (ext != "") {
+  if (ext !== "") {
     result += "." + ext;
   }
 
@@ -425,12 +425,12 @@ function GetForwardContactInfo()
 {
   var cards = GetSelectedAbCards();
   
-  if (cards.length == 0)
+  if (cards.length === 0)
     return;
 
   var subject = "";
   var prettyName = "";
-  if (cards.length == 1)
+  if (cards.length === 1)
   {
     // var array = [cards[0].displayName];
     var array = [cardToFilename(cards[0], "")];
@@ -452,8 +452,9 @@ function GetForwardContactInfo()
   }
   
   // Create a message with vCard(s) as attachment
+  var attachment;
   try {
-    var attachment = Components.classes['@mozilla.org/messengercompose/attachment;1']
+    attachment = Components.classes['@mozilla.org/messengercompose/attachment;1']
                           .createInstance(Components.interfaces.nsIMsgAttachment);
     attachment.url = vCardUrl;
     attachment.name = prettyName;
@@ -481,12 +482,13 @@ function csOnKeypress(aEvent)
       
         if ( isContactsSidebar )
         {
+          var format;
           // Shift+enter toggles HTML/text compose
-          if (aEvent.shiftKey)
-            var format = msgComposeFormat.OppositeOfDefault;
-          else
-            var format = msgComposeFormat.Default;
-  
+          if (aEvent.shiftKey) {
+            format = msgComposeFormat.OppositeOfDefault;
+          } else {
+            format = msgComposeFormat.Default;
+          }
           contactsComposeMessage(msgComposeType.New, format, 'addr_to', useSecondEmail);
         }
         else if ( !aEvent.shiftKey )
@@ -528,7 +530,7 @@ function csOnClick(aEvent)
 {
   // we only care about button 0 (left click) and 
   // button 1 (middle click) events
-  if (aEvent.button == 0) 
+  if (aEvent.button === 0) 
   {
     // all we need to worry about here is column header clicks.
     var t = aEvent.originalTarget;
@@ -545,7 +547,7 @@ function csOnClick(aEvent)
       SortAndUpdateIndicators(t.id, sortDirection);
     }
   }
-  else if (aEvent.button == 1) 
+  else if (aEvent.button === 1) 
   {
     processClickEvent(aEvent);
   }
@@ -555,7 +557,7 @@ function csOnClick(aEvent)
 function csOnDoubleClick(aEvent)
 {
   // we only care about button 0 (left click) events
-  if (aEvent.button == 0)
+  if (aEvent.button === 0)
     processClickEvent(aEvent);
 }
 
@@ -564,7 +566,7 @@ function processClickEvent(aEvent)
   var isContactsSidebar = aEvent.currentTarget.getAttribute("isContactsSidebar");
 
   // Only select valid row if middle button is clicked
-  if ( !isValidRow(aEvent, aEvent.button == 1) )
+  if ( !isValidRow(aEvent, aEvent.button === 1) )
   {
     // clicking on a non valid row should not open the compose window
     return;
@@ -578,16 +580,17 @@ function processClickEvent(aEvent)
   }
 
   // Control double click selects second email address as to: address
-  var useSecondEmail = aEvent.ctrlKey
+  var useSecondEmail = aEvent.ctrlKey;
 
   if ( isContactsSidebar )
   {
+    var format;
     // Shift double click toggles HTML/text compose
-    if (aEvent.shiftKey)
-      var format = msgComposeFormat.OppositeOfDefault;
-    else
-      var format = msgComposeFormat.Default;
-
+    if (aEvent.shiftKey) {
+      format = msgComposeFormat.OppositeOfDefault;
+    } else {
+      format = msgComposeFormat.Default;
+    }
     // ok, go ahead and write a new message
     contactsComposeMessage(msgComposeType.New, format, 'addr_to', useSecondEmail);
   }
@@ -600,9 +603,9 @@ function isValidRow(aEvent, doSelect)
 {
   var row = gContactsTree.treeBoxObject.getRowAt(aEvent.clientX, aEvent.clientY);
   
-  var result = (row != -1 &&
+  var result = (row !== -1 &&
                 row <= gContactsTree.view.rowCount-1 &&
-                aEvent.originalTarget.localName == "treechildren")
+                aEvent.originalTarget.localName == "treechildren");
   
   if (result && doSelect)
   {
