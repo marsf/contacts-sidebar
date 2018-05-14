@@ -37,6 +37,7 @@
   
   <!-- It was src="chrome://global/content/nsUserSettings.js" -->
   <script type="application/javascript" src="nsUserSettings.js"/>
+  <script type="application/javascript" src="chrome://global/content/globalOverlay.js"/>
   <script type="application/javascript" src="chrome://communicator/content/utilityOverlay.js"/>
   <script type="application/javascript" src="csCommon.js"/>
   <script type="application/javascript" src="contactsSidebar.js"/>
@@ -44,6 +45,13 @@
   <script type="application/javascript" src="contactsSearch.js"/>
   <script type="application/javascript" src="forwardMsg.js"/>
   <script type="application/javascript" src="settings.js"/>
+
+  <!-- Dummy commands to avoid error of missing ids -->
+  <commandset id="CommandUpdate_AddressBook">
+    <command id="cmd_addrTo" oncommand="addSelectedAddresses('addr_to')" disabled="true"/>
+    <command id="cmd_addrCc" oncommand="addSelectedAddresses('addr_cc')" disabled="true"/>
+    <command id="cmd_addrBcc" oncommand="addSelectedAddresses('addr_bcc')" disabled="true"/>
+  </commandset>
 
   <menupopup id="cardProperties">
     <menuitem id="propertiesItem" label="&contactsSidebar.properties.label;" accesskey="&contactsSidebar.properties.accesskey;"
