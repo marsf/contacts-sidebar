@@ -13,6 +13,10 @@ var nsPreferences = {
   get mPrefService() {
     return Components.classes["@mozilla.org/preferences-service;1"]
                      .getService(Components.interfaces.nsIPrefBranch);
+    /*
+    return this._prefs ||
+           (this._prefs = Services.prefs.getBranch("extensions.contactssidebar."));
+    */
   },
 
   setBoolPref: function (aPrefName, aPrefValue) {
@@ -32,18 +36,13 @@ var nsPreferences = {
 
   setUnicharPref: function (aPrefName, aPrefValue) {
     try {
-      var str = Components.classes["@mozilla.org/supports-string;1"]
-                          .createInstance(Components.interfaces.nsISupportsString);
-      str.data = aPrefValue;
-      this.mPrefService.setComplexValue(aPrefName,
-                                        Components.interfaces.nsISupportsString, str);
+      this.mPrefService.setStringPref(aPrefName, aPrefValue);
     } catch (e) {}
   },
 
   copyUnicharPref: function (aPrefName, aDefVal) {
     try {
-      return this.mPrefService.getComplexValue(aPrefName,
-                                               Components.interfaces.nsISupportsString).data;
+      return this.mPrefService.getStringPref(aPrefName);
     } catch (e) {
       return aDefVal !== undefined ? aDefVal : null;
     }
@@ -67,8 +66,7 @@ var nsPreferences = {
 
   getLocalizedUnicharPref: function (aPrefName, aDefVal) {
     try {
-      return this.mPrefService.getComplexValue(aPrefName,
-                                               Components.interfaces.nsIPrefLocalizedString).data;
+      return this.mPrefService.getStringPref(aPrefName);
     } catch (e) {
       return aDefVal !== undefined ? aDefVal : null;
     }

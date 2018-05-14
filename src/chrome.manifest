@@ -9,4 +9,5 @@ overlay	chrome://messenger/content/mailWindowOverlay.xul	chrome://contactssideba
 overlay	chrome://messenger/content/messengercompose/messengercompose.xul	chrome://contactssidebar/content/csMessengerComposeOverlay.xul
 overlay	chrome://messenger/content/messengercompose/abContactsPanel.xul		chrome://contactssidebar/content/csAbContactsPanel.xul
 overlay chrome://messenger/content/addressbook/abContactsPanel.xul		chrome://contactssidebar/content/csAbContactsPanel.xul
-style	chrome://global/content/customizeToolbar.xul				chrome://contactssidebar/skin/contactsSidebar.css
+style	chrome://global/content/customizeToolbar.xul				chrome://contactssidebar/skin/contactsSidebar.css appversion<59.0a1
+style	chrome://messenger/content/customizeToolbar.xul				chrome://contactssidebar/skin/contactsSidebar.css appversion>=59.0a1
