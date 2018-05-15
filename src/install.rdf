@@ -20,7 +20,6 @@
     <em:optionsType>3</em:optionsType>
     <em:optionsURL>chrome://contactssidebar/content/settings.xul</em:optionsURL>
     <em:unpack>false</em:unpack>
-    <em:hasEmbeddedWebExtension>true</em:hasEmbeddedWebExtension>
     <em:iconURL>chrome://contactssidebar/skin/contactssidebar.png</em:iconURL>
     
     <!-- Target Application this extension can install into, 
