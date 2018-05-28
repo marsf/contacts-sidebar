@@ -9,7 +9,7 @@
     <em:type>2</em:type>
     
     <!-- Front End MetaData -->
-    <em:name>Contacts Sidebar (20180514)</em:name>
+    <em:name>Contacts Sidebar (20180528)</em:name>
     <em:description>Displays the address books in a sidebar in the 3-pane-window.</em:description>
     <em:creator>Masahiko Imanaka (new edition)</em:creator>
     <em:homepageURL>https://github.com/marsf/contacts-sidebar/</em:homepageURL>

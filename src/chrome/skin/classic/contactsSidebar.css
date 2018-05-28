@@ -48,17 +48,18 @@
 /* ::::: toolbar button ::::: */
 
 #button-contacts {
-  list-style-image: url("chrome://contactssidebar/skin/contactssidebar-toolbar.png");
-  -moz-image-region: rect(0px 24px 24px 0px);
+  /* list-style-image: url("chrome://contactssidebar/skin/contactssidebar-toolbar.png"); */
+  /* -moz-image-region: rect(0px 16px 16px 0px); */
+  list-style-image: url("chrome://contactssidebar/skin/contactssidebar-toolbar.svg");
 }
 
 #button-contacts:hover:active,
 #button-contacts[open] {
-  -moz-image-region: rect(24px 24px 48px 0px);
+/*  -moz-image-region: rect(24px 24px 48px 0px); */
 }
 
 #button-contacts[disabled] {
-  -moz-image-region: rect(48px 24px 72px 0px) !important;  
+/*  -moz-image-region: rect(48px 24px 72px 0px) !important; */
 }
 
 #button-contacts[checked="true"] {
@@ -68,23 +69,24 @@
 /* ::::: small toolbar button ::::: */
 
 toolbar[iconsize="small"] #button-contacts {
-  list-style-image: url("chrome://contactssidebar/skin/contactssidebar-toolbar-small.png");
-  -moz-image-region: rect(0px 16px 16px 0px);
+  /* list-style-image: url("chrome://contactssidebar/skin/contactssidebar-toolbar-small.png"); */
+  /* -moz-image-region: rect(0px 16px 16px 0px); */
+  list-style-image: url("chrome://contactssidebar/skin/contactssidebar-toolbar.svg");
 }
 
 toolbar[iconsize="small"] #button-contacts:hover:active,
 toolbar[iconsize="small"] #button-contacts[open]{
-  -moz-image-region: rect(16px 16px 32px 0px);
+  /* -moz-image-region: rect(16px 16px 32px 0px); */
 }
 
 toolbar[iconsize="small"] #button-contacts[disabled] {
-  -moz-image-region: rect(32px 16px 48px 0px) !important; 
+  /* -moz-image-region: rect(32px 16px 48px 0px) !important; */
 }
 
 toolbar[iconsize="small"] #button-contacts[checked="true"] {
-/*  -moz-image-region: rect(48px 16px 64px 0px);*/
+  /* -moz-image-region: rect(48px 16px 64px 0px); */
 }
 
 #CustomizeToolbarWindow #button-contacts {
-  -moz-image-region: rect(0px 24px 24px 0px) !important;
+  /* -moz-image-region: rect(0px 24px 24px 0px) !important; */
 }
